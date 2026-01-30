@@ -133,11 +133,12 @@ export const heroData: Hero = {
 export const aboutData: About = {
   profileImageSrc: profilepic,
   description: `Soy Técnico Superior en Programación, egresado de la UTN | Facultad Regional Rafaela en 2026. 
-  Me considero un apasionado por el desarrollo de software, la tecnología y la optimización de procesos.`,
+  Me considero un apasionado por el desarrollo de software, la tecnología y la optimización de procesos.
+  Mi lugar favorito en el mundo es el MAR, donde puedo desconectar y encontrar inspiración.`,
 
   aboutItems: [
     { label: 'Ubicación', text: 'Rafaela, Santa Fe, Argentina.', Icon: MapIcon },
-    { label: 'Intereses', text: 'Software, automovilismo y música.', Icon: SparklesIcon },
+    { label: 'Intereses', text: 'Software, buceo y automovilismo.', Icon: SparklesIcon },
     {
       label: 'Estudios',
       text: 'Técnico Superior en Programación – UTN Facultad Regional Rafaela (2026).',
@@ -424,8 +425,8 @@ export const testimonial: TestimonialSection = {
  */
 
 export const contact: ContactSection = {
-  headerText: 'Get in touch.',
-  description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
+  headerText: 'Dejame tu consulta',
+  description: 'Este es un buen momento para enviarme un mensaje si estás interesado en trabajar conmigo o simplemente quieres saludar.',
   items: [
     {
       type: ContactType.Email,

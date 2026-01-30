@@ -12,7 +12,7 @@ const Footer: FC = memo(() => (
       <a
         className="rounded-full bg-neutral-100 p-1 ring-white ring-offset-2 ring-offset-gray-700/80 focus:outline-none focus:ring-2 sm:p-2"
         href={`/#${SectionId.Hero}`}>
-        <ChevronUpIcon className="h-6 w-6 text-blue-500 sm:h-8 sm:w-8" />
+        <ChevronUpIcon className="h-6 w-6 text-cyan-500 sm:h-8 sm:w-8" />
       </a>
     </div>
     <div className="flex flex-col items-center gap-y-6">
