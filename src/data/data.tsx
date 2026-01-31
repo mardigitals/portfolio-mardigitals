@@ -75,13 +75,13 @@ export const homePageMeta: HomepageMeta = {
  */
 export const SectionId = {
   Hero: 'hero',
-  About: 'about',
-  Contact: 'contact',
+  About: 'sobre mí',
+  Contact: 'contacto',
   Portfolio: 'portfolio',
-  Resume: 'resume',
-  Skills: 'skills',
+  Resume: 'resumen',
+  Skills: 'habilidades',
   Stats: 'stats',
-  Testimonials: 'testimonials',
+  Testimonials: 'testimonios',
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
@@ -137,20 +137,97 @@ export const aboutData: About = {
   Mi lugar favorito en el mundo es el MAR, donde puedo desconectar y encontrar inspiración.`,
 
   aboutItems: [
-    { label: 'Ubicación', text: 'Rafaela, Santa Fe, Argentina.', Icon: MapIcon },
-    { label: 'Intereses', text: 'Software, buceo y automovilismo.', Icon: SparklesIcon },
+    { label: 'Ubicación', 
+      text: (
+        <>
+          <div className="flex flex-col gap-y-3 pt-1">
+            <div className="flex items-start gap-x-2">
+              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_5px_#06b6d4]" />
+              <p className="text-sm leading-tight">
+                <span className="font-bold text-neutral-100">Rafaela, Santa Fe</span>
+                <br />
+                <span className="text-xs italic text-neutral-400">Argentina</span>
+              </p>
+            </div>
+          </div>
+        </>
+      ),
+      Icon: MapIcon 
+    },
+
+    { label: 'Intereses',   
+      text: (
+        <>
+          <div className="flex flex-col gap-y-3 pt-1">
+            <div className="flex items-start gap-x-2">
+              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_5px_#06b6d4]" />
+              <p className="text-sm leading-tight">
+                <span className="font-bold text-neutral-100">Software, buceo y automovilismo.</span>
+                <br />
+                <span className="text-xs italic text-neutral-400"></span>
+              </p>
+            </div>
+          </div>
+        </>
+      ),
+      
+      Icon: SparklesIcon
+    },
+
     {
       label: 'Estudios',
-      text: 'Técnico Superior en Programación – UTN Facultad Regional Rafaela (2026).',
+      text: (
+        <>
+          <div className="flex flex-col gap-y-3 pt-1">
+            <div className="flex items-start gap-x-2">
+              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_5px_#06b6d4]" />
+              <p className="text-sm leading-tight">
+                <span className="font-bold text-neutral-100">Técnico Sup. en Programación</span>
+                <br />
+                <span className="text-xs italic text-neutral-400"> UTN Facultad Regional Rafaela (2026).</span>
+              </p>
+            </div>
+          </div>
+        </>
+      ),
       Icon: AcademicCapIcon,
     },
+
     {
       label: 'Empleos',
       text: (
         <>   
-          <p>· Full Stack Developer - Freelance.</p>
-          <p>· Tech E-commerce (hardware) - Tienda Mar Digitals en Mercado Libre.</p>
-          <p>· Gerente - Autódromo “Ciudad de Rafaela”.</p>
+          <div className="flex flex-col gap-y-3 pt-1">
+            {/* Ítem: Full Stack Developer */}
+            <div className="flex items-start gap-x-2">
+              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_5px_#06b6d4]" />
+              <p className="text-sm leading-tight">
+                <span className="font-bold text-neutral-100">Full Stack Developer</span>
+                <br />
+                <span className="text-xs italic text-neutral-400">Freelance</span>
+              </p>
+            </div>
+
+            {/* Ítem: E-commerce */}
+            <div className="flex items-start gap-x-2">
+              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
+              <p className="text-sm leading-tight">
+                <span className="font-bold text-neutral-100">Tech E-commerce</span>
+                <br />
+                <span className="text-xs italic text-neutral-400">Tienda Mar Digitals · Mercado Libre</span>
+              </p>
+            </div>
+
+            {/* Ítem: Gerente */}
+            <div className="flex items-start gap-x-2">
+              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
+              <p className="text-sm leading-tight">
+                <span className="font-bold text-neutral-100">Gerente</span>
+                <br />
+                <span className="text-xs italic text-neutral-400">Autódromo “Ciudad de Rafaela”</span>
+              </p>
+            </div>
+          </div>
         </>
       ),
       Icon: BuildingOffice2Icon,

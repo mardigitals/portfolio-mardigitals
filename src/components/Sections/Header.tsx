@@ -32,10 +32,13 @@ const Header: FC = memo(() => {
 
 const DesktopNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}> = memo(
   ({navSections, currentSection}) => {
+    // Eliminé 'text-neutral-100' de baseClass para que no pise al activeClass
     const baseClass =
-      '-m-1.5 p-1.5 rounded-md font-bold first-letter:uppercase hover:transition-colors hover:duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 sm:hover:text-cyan-500 text-neutral-100';
+      '-m-1.5 p-1.5 rounded-md font-bold first-letter:uppercase transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 sm:hover:text-cyan-400';
+    
     const activeClass = classNames(baseClass, 'text-cyan-500');
     const inactiveClass = classNames(baseClass, 'text-neutral-100');
+
     return (
       <header className="fixed top-0 z-50 hidden w-full bg-neutral-900/50 p-4 backdrop-blur sm:block" id={headerID}>
         <nav className="flex justify-center gap-x-8">
@@ -64,15 +67,18 @@ const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}
 
     const baseClass =
       'p-2 rounded-md first-letter:uppercase transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500';
-    const activeClass = classNames(baseClass, 'bg-neutral-900 text-white font-bold');
-    const inactiveClass = classNames(baseClass, 'text-neutral-200 font-medium');
+    
+    // Cambié el fondo a neutral-900 y el texto a cyan para el móvil
+    const activeClass = classNames(baseClass, 'bg-neutral-900 text-cyan-500 font-bold shadow-lg');
+    const inactiveClass = classNames(baseClass, 'text-neutral-200 font-medium hover:bg-neutral-700/50');
+
     return (
       <>
         <button
           aria-label="Menu Button"
-          className="fixed right-2 top-2 z-40 rounded-md bg-cyan-500 p-2 ring-offset-gray-800/60 hover:bg-cyan-400 focus:outline-none focus:ring-0 focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 sm:hidden"
+          className="fixed right-4 top-4 z-40 rounded-full bg-cyan-500 p-3 shadow-lg ring-offset-gray-800/60 hover:bg-cyan-400 focus:outline-none focus:ring-0 focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 sm:hidden"
           onClick={toggleOpen}>
-          <Bars3BottomRightIcon className="h-8 w-8 text-white" />
+          <Bars3BottomRightIcon className="h-6 w-6 text-white" />
           <span className="sr-only">Open sidebar</span>
         </button>
         <Transition.Root as={Fragment} show={isOpen}>
@@ -85,7 +91,7 @@ const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}
               leave="transition-opacity ease-linear duration-300"
               leaveFrom="opacity-100"
               leaveTo="opacity-0">
-              <Dialog.Overlay className="fixed inset-0 bg-stone-900 bg-opacity-75" />
+              <Dialog.Overlay className="fixed inset-0 bg-black/80 backdrop-blur-sm" />
             </Transition.Child>
             <Transition.Child
               as={Fragment}
@@ -95,8 +101,11 @@ const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}
               leave="transition ease-in-out duration-300 transform"
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full">
-              <div className="relative w-4/5 bg-stone-800">
-                <nav className="mt-5 flex flex-col gap-y-2 px-2">
+              <div className="relative flex w-4/5 max-w-xs flex-col bg-stone-900 pb-12 shadow-xl">
+                <div className="flex items-center justify-center p-6 border-b border-white/10">
+                   <span className="text-xl font-black text-cyan-500 italic">MAR DIGITALS</span>
+                </div>
+                <nav className="mt-5 flex flex-col gap-y-4 px-4">
                   {navSections.map(section => (
                     <NavItem
                       activeClass={activeClass}
@@ -128,7 +137,6 @@ const NavItem: FC<{
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
       href={`/#${section}`}
-      key={section}
       onClick={onClick}>
       {section}
     </Link>
