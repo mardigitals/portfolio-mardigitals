@@ -62,7 +62,7 @@ const Testimonials: FC = memo(() => {
     setScrollValue(event.currentTarget.scrollLeft);
   }, []);
 
-  useInterval(next, 10000);
+  useInterval(next, 7000);
 
   if (!testimonials.length) {
     return null;
@@ -121,16 +121,26 @@ const TestimonialItem: FC<{testimonial: TestimonialType; isActive: boolean}> = m
         isActive ? 'opacity-100' : 'opacity-0',
       )}>
       {image ? (
-        <div className="relative h-14 w-14 shrink-0 sm:h-16 sm:w-16">
+        <div className="relative h-14 w-24 shrink-0 sm:h-16 sm:w-28">
           <QuoteIcon className="absolute -left-2 -top-2 h-4 w-4 stroke-cyan-500 text-white" />
-          <img alt={name} className="h-full w-full rounded-full object-cover" src={image} />
+          <img
+            alt={name}
+            src={image}
+            className="h-full w-full object-contain"
+          />
         </div>
       ) : (
         <QuoteIcon className="h-5 w-5 shrink-0 text-cyan-500 sm:h-8 sm:w-8" />
       )}
       <div className="flex flex-col gap-y-4">
-        <p className="prose prose-sm font-medium italic text-white sm:prose-base">{text}</p>
-        <p className="text-xs font-bold italic text-cyan-500 sm:text-sm md:text-base lg:text-lg">-- {name}</p>
+        <div className="relative">
+          <p className="prose prose-sm font-medium italic text-white sm:prose-base pr-6">
+            {text}
+            {/* Icono de cierre al final del texto */}
+            <QuoteIcon className="inline-block ml-2 h-4 w-4 rotate-180 transform text-white-500" />
+          </p>
+        </div>
+        <p className="text-xs font-bold italic text-cyan-500 sm:text-sm md:text-base lg:text-lg">- {name}</p>
       </div>
     </div>
   ),
