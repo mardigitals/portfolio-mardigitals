@@ -33,7 +33,7 @@ import {
 } from 'react-icons/si';
 import { BiLogoJava } from 'react-icons/bi';
 import { TbBrandVisualStudio } from 'react-icons/tb';
-
+import { motion } from 'framer-motion';
 
 /**
  * Lógica para cálculo de edad automática
@@ -121,6 +121,28 @@ export const heroData: Hero = {
 /**
  * About section
  */
+
+/**
+ * Componente interno para el punto con efecto radar/titileo
+ */
+const StatusDot = () => (
+  <div className="relative mt-1.5 h-1.5 w-1.5 shrink-0">
+    <motion.div
+      animate={{ 
+        scale: [1, 2.2, 1], 
+        opacity: [1, 0, 1] 
+      }}
+      transition={{
+        duration: 1.0,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+      className="absolute inset-0 rounded-full bg-cyan-500 shadow-[0_0_8px_#06b6d4]"
+    />
+    <div className="absolute inset-0 rounded-full bg-cyan-400" />
+  </div>
+);
+
 export const aboutData: About = {
   profileImageSrc: profilepic,
   description: `Soy Técnico Superior en Programación, egresado de la UTN | Facultad Regional Rafaela en 2026. 
@@ -128,58 +150,45 @@ export const aboutData: About = {
   Mi lugar favorito en el mundo es el MAR, donde puedo desconectar y encontrar inspiración.`,
 
   aboutItems: [
-    { label: 'Ubicación', 
+    { 
+      label: 'Ubicación', 
       text: (
-        <>
-          <div className="flex flex-col gap-y-3 pt-1">
-            <div className="flex items-start gap-x-2">
-              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_5px_#06b6d4]" />
-              <p className="text-sm leading-tight">
-                <span className="font-bold text-neutral-100">Rafaela, Santa Fe</span>
-                <br />
-                <span className="text-xs italic text-neutral-400">Argentina</span>
-              </p>
-            </div>
-          </div>
-        </>
+        <div className="flex items-start gap-x-2 pt-1">
+          <StatusDot />
+          <p className="text-sm leading-tight">
+            <span className="font-bold text-neutral-100">Rafaela, Santa Fe</span>
+            <br />
+            <span className="text-xs italic text-neutral-400">Argentina</span>
+          </p>
+        </div>
       ),
       Icon: MapIcon 
     },
 
-    { label: 'Intereses',   
+    { 
+      label: 'Intereses',   
       text: (
-        <>
-          <div className="flex flex-col gap-y-3 pt-1">
-            <div className="flex items-start gap-x-2">
-              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_5px_#06b6d4]" />
-              <p className="text-sm leading-tight">
-                <span className="font-bold text-neutral-100">Software, buceo y automovilismo.</span>
-                <br />
-                <span className="text-xs italic text-neutral-400"></span>
-              </p>
-            </div>
-          </div>
-        </>
+        <div className="flex items-start gap-x-2 pt-1">
+          <StatusDot />
+          <p className="text-sm leading-tight text-neutral-100 font-bold">
+            Software, buceo y automovilismo.
+          </p>
+        </div>
       ),
-      
       Icon: SparklesIcon
     },
 
     {
       label: 'Estudios',
       text: (
-        <>
-          <div className="flex flex-col gap-y-3 pt-1">
-            <div className="flex items-start gap-x-2">
-              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_5px_#06b6d4]" />
-              <p className="text-sm leading-tight">
-                <span className="font-bold text-neutral-100">Técnico Sup. en Programación</span>
-                <br />
-                <span className="text-xs italic text-neutral-400"> UTN Facultad Regional Rafaela (2026).</span>
-              </p>
-            </div>
-          </div>
-        </>
+        <div className="flex items-start gap-x-2 pt-1">
+          <StatusDot />
+          <p className="text-sm leading-tight">
+            <span className="font-bold text-neutral-100"> Técnico Sup. en Programación</span>
+            <br />
+            <span className="text-xs italic text-neutral-400"> UTN Facultad Regional Rafaela (2026).</span>
+          </p>
+        </div>
       ),
       Icon: AcademicCapIcon,
     },
@@ -187,45 +196,39 @@ export const aboutData: About = {
     {
       label: 'Empleos',
       text: (
-        <>   
-          <div className="flex flex-col gap-y-3 pt-1">
-            {/* Ítem: Full Stack Developer */}
-            <div className="flex items-start gap-x-2">
-              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500 shadow-[0_0_5px_#06b6d4]" />
-              <p className="text-sm leading-tight">
-                <span className="font-bold text-neutral-100">Full Stack Developer</span>
-                <br />
-                <span className="text-xs italic text-neutral-400">Freelance</span>
-              </p>
-            </div>
-
-            {/* Ítem: E-commerce */}
-            <div className="flex items-start gap-x-2">
-              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
-              <p className="text-sm leading-tight">
-                <span className="font-bold text-neutral-100">Tech E-commerce</span>
-                <br />
-                <span className="text-xs italic text-neutral-400">Tienda Mar Digitals · Mercado Libre</span>
-              </p>
-            </div>
-
-            {/* Ítem: Gerente */}
-            <div className="flex items-start gap-x-2">
-              <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
-              <p className="text-sm leading-tight">
-                <span className="font-bold text-neutral-100">Gerente</span>
-                <br />
-                <span className="text-xs italic text-neutral-400">Autódromo “Ciudad de Rafaela”</span>
-              </p>
-            </div>
+        <div className="flex flex-col gap-y-3 pt-1">
+          <div className="flex items-start gap-x-2">
+            <StatusDot />
+            <p className="text-sm leading-tight">
+              <span className="font-bold text-neutral-100">Full Stack Developer</span>
+              <br />
+              <span className="text-xs italic text-neutral-400">Freelance</span>
+            </p>
           </div>
-        </>
+
+          <div className="flex items-start gap-x-2">
+            <StatusDot />
+            <p className="text-sm leading-tight">
+              <span className="font-bold text-neutral-100">Tech E-commerce</span>
+              <br />
+              <span className="text-xs italic text-neutral-400">Tienda Mar Digitals · Mercado Libre</span>
+            </p>
+          </div>
+
+          <div className="flex items-start gap-x-2">
+            <StatusDot />
+            <p className="text-sm leading-tight">
+              <span className="font-bold text-neutral-100">Gerente</span>
+              <br />
+              <span className="text-xs italic text-neutral-400">Autódromo “Ciudad de Rafaela”</span>
+            </p>
+          </div>
+        </div>
       ),
       Icon: BuildingOffice2Icon,
     },
   ],
 };
-
 /**
  * Skills section
  */
@@ -357,7 +360,7 @@ export const portfolioItems: PortfolioItem[] = [
     image: porfolioImage2,
   },
     {
-    title: 'ANOTHER PROJECT',
+    title: 'Otros Proyectos',
     description: '12',
     url: 'https://www.otrosproyectos.com',
     image: porfolioImage3,
@@ -373,12 +376,9 @@ export const education: TimelineItem[] = [
     location: 'UTN | Facultad Regional de Rafaela',
     title: 'Técnico Superior en Programación',
     content: (
-      <p>
-        Aprendí a desarrollar software en forma sólida, desde los requerimientos hasta el mantenimiento en producción.  
-        Durante la carrera, adquirí conocimientos  desde la lógica de bajo nivel en <strong>C</strong>, todo el mundo de POO con <strong>Java</strong> hasta arquitecturas modernas y competencias avanzadas en el ecosistema de <strong>JavaScript/TypeScript</strong> con <strong>React y Node.js</strong>, 
-        además de desarrollo robusto con <strong>.NET y C#</strong> con su enfoque más coorporativo. Me especialicé en el diseño de bases de datos relacionales como 
-        <strong> SQL Server y MySQL</strong>, aplicando patrones de diseño y metodologías ágiles para crear soluciones escalables y eficientes.
-      </p>
+    <p>
+    Formación integral en el ciclo de vida del software. Domino lenguajes desde <strong>C</strong> y <strong>Java </strong> <em>(POO)</em> hasta el ecosistema moderno de <strong>JavaScript/TypeScript</strong> <em>(React - Node.js)</em>, con sólida experiencia en <strong>.NET y C#</strong>. Especialista en bases de datos <strong>SQL Server y MySQL</strong>, aplicando patrones de diseño y metodologías ágiles para crear soluciones escalables.
+    </p>
     ),
   },
 ];
