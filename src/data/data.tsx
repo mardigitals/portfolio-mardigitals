@@ -11,7 +11,6 @@ import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import heroImage from '../images/header-background.webp';
 import porfolioImage1 from '../images/portfolio/portfolio-imagen-1.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-imagen-2.jpg';
-import porfolioImage3 from '../images/portfolio/portfolio-imagen-3.jpg';
 import profilepic from '../images/profilepic.jpg';
 import testimonialImage from '../images/testimonial.webp';
 import {
@@ -50,7 +49,6 @@ const calculateAge = (birthDate: string): number => {
   return age;
 };
 
-// Reemplazá 'YYYY-MM-DD' por tu fecha de nacimiento real
 const myAge = calculateAge('1995-06-14');
 
 /**
@@ -82,7 +80,19 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `Soy Mario Ricotti.`,
+  name: (
+    <>
+      Soy Mario{' '}
+      <span className="relative inline-block font-bold 
+        bg-gradient-to-r from-[#feffd4] via-[#3b82f6] to-[#22d3ee] 
+        bg-clip-text text-transparent 
+        drop-shadow-[0_0_10px_rgba(255,255,255,0.7)] 
+        drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]
+        animate-pulse-subtle">
+        Ricotti
+      </span>
+    </>
+  ),
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
@@ -359,14 +369,8 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Gestión de Fans para Autódromo',
     description: 'Memberships Platform',
-    url: 'https://www.autodromorafaela.com',
     image: porfolioImage2,
-  },
-    {
-    title: 'Otros Proyectos',
-    description: '12',
-    url: 'https://www.otrosproyectos.com',
-    image: porfolioImage3,
+    disabled: true,
   },
 ];
 

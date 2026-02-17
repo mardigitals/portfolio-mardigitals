@@ -1,9 +1,8 @@
-import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
+import {ArrowTopRightOnSquareIcon, LockClosedIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
 import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
-
 import {isMobile} from '../../config';
 import {portfolioItems, SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
@@ -93,7 +92,7 @@ export default Portfolio;
 /**
  * ItemOverlay: Mantiene tu lógica original de Mobile corregida con estilos nuevos
  */
-const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, description}}) => {
+const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, description, disabled}}) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
@@ -108,34 +107,44 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
 
   const handleItemClick = useCallback(
     (event: MouseEvent<HTMLElement>) => {
+      if (disabled) {
+        event.preventDefault();
+        return;
+      }
       if (mobile && !showOverlay) {
         event.preventDefault();
         setShowOverlay(true);
       }
     },
-    [mobile, showOverlay],
+    [mobile, showOverlay, disabled],
   );
 
   return (
     <a
       className={classNames(
-        'absolute inset-0 flex flex-col justify-center bg-gray-900/90 p-4 transition-all duration-500',
+        'absolute inset-0 flex flex-col justify-center bg-gray-900/90 p-4 transition-all duration-500', disabled ? 'cursor-not-allowed' : 'cursor-pointer', 
         !mobile ? 'opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0' : (showOverlay ? 'opacity-100' : 'opacity-0'),
       )}
-      href={url}
+      href={disabled ? undefined : url}
       onClick={handleItemClick}
       ref={linkRef}
-      target="_blank"
+      target={disabled ? undefined : "_blank"}
     >
       <div className="flex h-full w-full flex-col items-center justify-center gap-y-2 text-center">
         <h3 className="text-base font-bold text-white sm:text-lg">{title}</h3>
         <p className="text-xs text-gray-300 sm:text-sm">{description}</p>
         
-        {/* Indicador de "Ver más" con el Cyan de Mar Digitals */}
-        <div className="mt-2 flex items-center gap-x-1 text-xs font-bold text-cyan-400">
-          <span>VER PROYECTO</span>
-          <ArrowTopRightOnSquareIcon className="h-4 w-4" />
-        </div>
+      {disabled ? (
+          <div className="mt-2 flex items-center gap-x-1 text-xs font-bold text-amber-500">
+            <LockClosedIcon className="h-4 w-4" />
+            <span className="uppercase tracking-wider">En construcción</span>
+          </div>
+        ) : (
+          <div className="mt-2 flex items-center gap-x-1 text-xs font-bold text-cyan-400">
+            <span>VER PROYECTO</span>
+            <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+          </div>
+        )}
       </div>
     </a>
   );
