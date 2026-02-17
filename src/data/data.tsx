@@ -462,6 +462,11 @@ export const contact: ContactSection = {
       href: 'https://wa.me/5493492247130?text=Hola%20Mario!%20Vengo%20de%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hacerte%20una%20consulta.',
     },
     {
+      type: ContactType.LinkedIn,
+      text: 'Mario Ricotti',
+      href: 'https://www.linkedin.com/in/mario-ricotti/',
+    },
+    {
       type: ContactType.Instagram,
       text: '@mardigitals.arg',
       href: 'https://www.instagram.com/mardigitals.arg/',
