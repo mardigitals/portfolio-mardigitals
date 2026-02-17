@@ -119,12 +119,10 @@ export interface ContactSection {
 
 export const ContactType = {
   Email: 'Email',
-  Phone: 'Phone',
+  Whatsapp: 'Whatsapp',
   Location: 'Location',
   Github: 'Github',
   LinkedIn: 'LinkedIn',
-  Facebook: 'Facebook',
-  Twitter: 'Twitter',
   Instagram: 'Instagram',
 } as const;
 

@@ -457,9 +457,9 @@ export const contact: ContactSection = {
       href: 'mailto:mardigitals.arg@gmail.com',
     },
     {
-      type: ContactType.Location,
-      text: 'Rafaela, Santa Fe, Argentina.',
-      href: 'https://www.google.com/maps/search/?api=1&query=Belgrano+476+Rafaela/',
+      type: ContactType.Whatsapp,
+      text: '3492-247130',
+      href: 'https://wa.me/5493492247130?text=Hola%20Mario!%20Vengo%20de%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20hacerte%20una%20consulta.',
     },
     {
       type: ContactType.Instagram,
@@ -470,6 +470,11 @@ export const contact: ContactSection = {
       type: ContactType.Github,
       text: 'mardigitals',
       href: 'https://github.com/mardigitals/',
+    },
+    {
+      type: ContactType.Location,
+      text: 'Rafaela, Santa Fe, Argentina.',
+      href: 'https://www.google.com/maps/search/?api=1&query=Belgrano+476+Rafaela/',
     },
   ],
 };
