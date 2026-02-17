@@ -55,8 +55,13 @@ const myAge = calculateAge('1995-06-14');
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'Mario Ricotti | Full Stack Developer | mar digitals',
-  description: "Portfolio profesional de Mario Ricotti,  Full Stack Developer. Mar digitals founder",
+  title: 'Mario Ricotti | Full Stack Developer | MAR Digitals Rafaela',
+  description: 'Portfolio profesional de Mario Ricotti, Desarrollador Full Stack y fundador de MAR Digitals. Soluciones web modernas, intuitivas y escalables en Rafaela, Santa Fe.',
+  keywords: 'desarrollo web, programador, Rafaela, full stack developer, MAR Digitals, Mario Ricotti, React, Next.js, software a medida, diseño web santa fe',
+  ogTitle: 'Mario Ricotti | MAR Digitals - Desarrollo Web Profesional',
+  ogDescription: 'Desarrollo aplicaciones web modernas con enfoque en UX/UI funcional y escalable. Conocé mis proyectos.',
+  ogImage: 'https://mardigitals.github.io/images/header-background.webp', 
+  ogUrl: 'https://mardigitals.github.io',
 };
 
 /**

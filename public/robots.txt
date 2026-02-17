@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mardigitals.github.io/sitemap.xml

@@ -6,7 +6,11 @@ import {IconProps} from '../components/Icon/Icon';
 export interface HomepageMeta {
   title: string;
   description: string;
-  ogImageUrl?: string;
+  keywords?: string;
+  ogTitle?: string; 
+  ogDescription?: string;
+  ogUrl?: string;
+  ogImage?: string;
   twitterCardType?: 'summary' | 'summary_large';
   twitterTitle?: string;
   twitterSite?: string;
