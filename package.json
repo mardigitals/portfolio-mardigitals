@@ -1,6 +1,6 @@
 {
-  "name": "react-resume-template",
-  "version": "2.0.0",
+  "name": "portfolio-mardigitals",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "yarn compile && yarn next build",
