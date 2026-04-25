@@ -107,13 +107,17 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
 
   const handleItemClick = useCallback(
     (event: MouseEvent<HTMLElement>) => {
-      if (disabled) {
-        event.preventDefault();
-        return;
-      }
+      // 1. Primero manejamos la experiencia visual en celulares
       if (mobile && !showOverlay) {
-        event.preventDefault();
-        setShowOverlay(true);
+        event.preventDefault(); // Evitamos que navegue al primer toque
+        setShowOverlay(true);   // Encendemos el overlay negro
+        return;                 // Cortamos aquí para que el usuario pueda leer
+      }
+
+      // 2. Luego manejamos el bloqueo si está en construcción
+      if (disabled) {
+        event.preventDefault(); // Si vuelve a hacer clic (o si está en PC), lo bloqueamos
+        return;
       }
     },
     [mobile, showOverlay, disabled],
